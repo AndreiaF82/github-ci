@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "cfae79e3-6f70-4184-a327-46fd14075157",
+		"name": "viacep-consulta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24090430"
+	},
+	"item": [
+		{
+			"name": "viacep-consulta",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function zipCode()  {\r",
+							"\r",
+							"    var zipCode = [\"04854-230\", \"50870-491\", \"69303-062\", \"69313-365\", \"74075-210\",\"83325-220\", \"53625-010\", \"95032-759\", \"77825-610\", \"32140-750\", ]\r",
+							"\r",
+							"var randomItem = zipCode[Math.floor(Math.random() * zipCode.length)];\r",
+							"\r",
+							"return randomItem;\r",
+							"}\r",
+							"pm.variables.set(\"ZipCode\", zipCode());\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{ZipCode}}/json/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{ZipCode}}",
+						"json",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
